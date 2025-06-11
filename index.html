@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador Astrológico IA - Solo Perfil Psicológico</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px; background: #f0f4f8; color: #333; font-size: 20px; }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 40px; font-size: 36px; }
+        .contenedor { max-width: 900px; margin: auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        label { font-weight: bold; font-size: 22px; }
+        select, button { font-size: 22px; padding: 14px 18px; margin: 20px 0; width: 100%; border-radius: 8px; border: 1px solid #ccc; }
+        button { background: #3498db; color: #fff; border: none; cursor: pointer; }
+        button:hover { background: #2980b9; }
+        .resultado { margin-top: 40px; }
+        .bloque { background: #ecf0f1; padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+        .texto-ajustado { white-space: normal; word-wrap: break-word; font-size: 20px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Generador Astrológico IA</h1>
+
+        <label for="signo">Selecciona un signo:</label>
+        <select id="signo">
+            <option>Aries</option><option>Tauro</option><option>Géminis</option>
+            <option>Cáncer</option><option>Leo</option><option>Virgo</option>
+            <option>Libra</option><option>Escorpio</option><option>Sagitario</option>
+            <option>Capricornio</option><option>Acuario</option><option>Piscis</option>
+        </select>
+
+        <button onclick="generar()">Generar Perfil Psicológico</button>
+
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        const signos = {
+            "Aries": {"Fuerza":"Acción","Emoción":"Pasión","Mente":"Rápida","Sombra":"Impulsivo"},
+            "Tauro": {"Fuerza":"Estabilidad","Emoción":"Dulzura","Mente":"Práctica","Sombra":"Terquedad"},
+            "Géminis": {"Fuerza":"Adaptabilidad","Emoción":"Inquietud","Mente":"Ágil","Sombra":"Nerviosismo"},
+            "Cáncer": {"Fuerza":"Protección","Emoción":"Vulnerabilidad","Mente":"Intuitiva","Sombra":"Cambiante"},
+            "Leo": {"Fuerza":"Liderazgo","Emoción":"Pasión","Mente":"Segura","Sombra":"Egocentrismo"},
+            "Virgo": {"Fuerza":"Servicio","Emoción":"Reserva","Mente":"Analítica","Sombra":"Exigencia"},
+            "Libra": {"Fuerza":"Equilibrio","Emoción":"Diplomacia","Mente":"Justicia","Sombra":"Indecisión"},
+            "Escorpio": {"Fuerza":"Intensidad","Emoción":"Profundidad","Mente":"Estrategia","Sombra":"Control"},
+            "Sagitario": {"Fuerza":"Libertad","Emoción":"Entusiasmo","Mente":"Filosofía","Sombra":"Exageración"},
+            "Capricornio": {"Fuerza":"Perseverancia","Emoción":"Reserva","Mente":"Realismo","Sombra":"Frialdad"},
+            "Acuario": {"Fuerza":"Originalidad","Emoción":"Desapego","Mente":"Visión","Sombra":"Distancia"},
+            "Piscis": {"Fuerza":"Compasión","Emoción":"Confusión","Mente":"Imaginación","Sombra":"Evasión"}
+        };
+
+        function generar() {
+            const signoSeleccionado = document.getElementById("signo").value;
+            const datos = signos[signoSeleccionado];
+            
+            const perfil = `Perfil de ${signoSeleccionado}:
+Su fuerza principal es la ${datos.Fuerza}, que le permite enfrentar la vida con una energía distintiva. Emocionalmente se caracteriza por su ${datos.Emoción}, lo que influye en sus relaciones y vivencias internas. Su mente funciona de forma ${datos.Mente}, abordando los problemas de manera particular. Sin embargo, su desafío o sombra es la ${datos.Sombra}, lo que puede generar conflictos o aprendizajes importantes.`;
+
+            document.getElementById("resultado").innerHTML = `
+            <div class="bloque"><h3>Perfil Psicológico</h3><div class="texto-ajustado">${perfil}</div></div>`;
+        }
+    </script>
+</body>
+</html>
